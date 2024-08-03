@@ -1,10 +1,61 @@
+<!--new synrax-->
+<!-- <div class="card" style="width: 18rem;">
+@if (course.imgUrl) {
+  <img [src]="course.imgUrl" class="card-img-top" alt="...">
+}
+@else {
+<h4>No Imges found</h4>
+}
+<div class="card-body">
+  <h5>course number: {{index}}</h5>
+  <h5 class="card-title">{{course.title}}</h5>
+  <p class="card-text">{{course.desc}}</p>
+  <button class="btn btn-primary" (click)="viewCourse()">view course</button>
+</div>
+</div> -->
 
-    <div class="card" style="width: 18rem;">
-      <img [src]="course.imgUrl" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{course.title}}</h5>
-        <p class="card-text">{{course.desc}}</p>
-        <button class="btn btn-primary" (click)="viewCourse()">view course</button>
+
+
+
+<div class="card" style="width: 18rem;">
+
+  @if (course.imgUrl) {
+    <img [src]="course.imgUrl" class="card-img-top" alt="...">
+  } @else {
+    <h5 class="text-center">No Images Available</h5>
+  }
+
+  <div class="card-body">
+    <!-- new syntax of switch case -->
+    <!-- @switch (course.id) {
+      @case (1) {
+        <span class="badge bg-warning">first</span>
+      }
+      @case (2) {
+        <span class="badge bg-info">second</span>
+      }
+      @case (3) {
+        <span class="badge bg-danger">third</span>
+      }
+      @default {
+        <span class="badge bg-danger">other</span>
+
+      }
+    } -->
+
+    <!-- old syntax of switch case -->
+      <div [ngSwitch]="course.id">
+        <span *ngSwitchCase="1" class="badge bg-warning">first</span>
+        <span *ngSwitchCase="2" class="badge bg-info">second</span>
+        <span *ngSwitchCase="3" class="badge bg-danger">third</span>
+        <span *ngSwitchDefault class="badge bg-danger">other</span>
       </div>
-    </div>
-  
+    
+    <h5>course number: {{index}}</h5>
+    <h5 class="card-title" [ngClass]="course.id==1?'text-danger':'text-primary'">{{course.title}}</h5>
+    <p class="card-text">{{course.desc}}</p>
+    <button class="btn btn-primary" (click)="viewCourse()">view course</button>
+  </div>
+</div>
+
+

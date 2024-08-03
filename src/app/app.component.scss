@@ -1,0 +1,14 @@
+::ng-deep .first-card .card{
+    border: solid 5px palevioletred !important;
+}
+
+::ng-deep .last-card .card{
+    border: solid 5px #66c6c6!important;
+}
+::ng-deep .odd-card .card{
+    background-color: aqua;
+}
+
+::ng-deep .even-card .card{
+   background-color: pink;
+}

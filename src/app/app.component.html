@@ -1,21 +1,26 @@
 <div class="container my-5">
   <div class="row">
     <!-- old syntax of ngFor -->
-   <ng-container *ngFor="let course of courses">
+    <!--<ng-container *ngFor="let course of courses">
     <div class="col-md-4 col-12">
-      <app-card [course]="course" (viewCourseEmitter)="onCourseClicked($event)"/> <!-- self closing tag-->
+      <app-card [course]="course" (viewCourseEmitter)="onCourseClicked($event)"/> 
     </div>
-   </ng-container>
+   </ng-container>-->
 
 
-   <!-- new syntax of ngFor -->
-    
-   <div class="mt-5 "> loop with new syntax </div>
-   @for (course of courses; track course.id ){ <!-- track is required with unique thing like id -->
+    <!-- new syntax of ngFor -->
+
+    @for (course of courses; track trackCourse){ <!-- track is required with unique thing like id  or index or unique method-->
     <div class="col-md-4 col-12">
-      <app-card [course]="course" (viewCourseEmitter)="onCourseClicked($event)"/> <!-- self closing tag-->
+      courses count: {{$count}}
+      <app-card [course]="course" [index]="$index" [class.first-card]="$first" [class.last-card]="$last"
+        [class.odd-card]="$odd" [class.even-card]="$even" (viewCourseEmitter)="onCourseClicked($event)" />
+      <!-- self closing tag-->
     </div>
-   }
+    }
+    @empty {
+    <h1>Thre is no courses found </h1>
+    }
 
   </div>
 </div>
